@@ -5,10 +5,10 @@ import { DataRepository } from "./data.repository";
 export class DataService {
   private dataRepository: DataRepository;
 
-  constructor(dataRepository: DataRepository) {
-    this.dataRepository = dataRepository;
+  constructor() {
+    this.dataRepository = new DataRepository()  ;
   }
-  async fetchDataReferences(query: string): Promise<any> {
+  async fetchDataReferencesServices(query: string): Promise<any> {
     try {
       const data = await this.dataRepository.getDataReferences(query);
       return HttpResponse.response(

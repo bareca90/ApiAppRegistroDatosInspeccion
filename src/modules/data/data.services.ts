@@ -21,4 +21,50 @@ export class DataService {
       throw new Error("Error al obtener los datos de referencias");
     }
   }
+  async insertDataReferencesServices(
+    query: string,
+    reference: number,
+    releaseStartDate: string | null,
+    releaseStartTime: string | null,
+    releaseFinishDate: string | null,
+    releaseFinishTime: string | null,
+    sampleStartDate: string | null,
+    sampleStartTime: string | null,
+    sampleFinishDate: string | null,
+    sampleFinishTime: string | null,
+    stampedDate: string | null,
+    stampedTime: string | null,
+    releaseTemperature: number | null,
+    sampleTemperature: number | null,
+    stampedTemperature: number | null
+  ): Promise<any> {
+    try {
+      const dataInsertDataReferences = await this.dataRepository.isertDataReferences(
+        query,
+        reference,
+        releaseStartDate,
+        releaseStartTime,
+        releaseFinishDate,
+        releaseFinishTime,
+        sampleStartDate,
+        sampleStartTime,
+        sampleFinishDate,
+        sampleFinishTime,
+        stampedDate,
+        stampedTime,
+        releaseTemperature,
+        sampleTemperature,
+        stampedTemperature
+      );
+      if (dataInsertDataReferences.codcodmsg == 300) {
+        return HttpResponse.response(CodesHttpEnum.notFound, null, "No se encontraron datos para actualizar");
+      } else {
+        return HttpResponse.response(CodesHttpEnum.ok, dataInsertDataReferences, "Data from DataServices: dataInsertDataReferences");
+      }
+    } catch (error) {
+      console.error("Error en DataService insertDataReferences:", error);
+      throw new Error("Error al insertar los datos de referencias");
+    }
+  }
+
 }

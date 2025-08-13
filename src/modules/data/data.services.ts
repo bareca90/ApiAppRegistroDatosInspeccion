@@ -36,7 +36,8 @@ export class DataService {
     stampedTime: string | null,
     releaseTemperature: number | null,
     sampleTemperature: number | null,
-    stampedTemperature: number | null
+    stampedTemperature: number | null,
+    user : string
   ): Promise<any> {
     try {
       const dataInsertDataReferences = await this.dataRepository.isertDataReferences(
@@ -54,7 +55,8 @@ export class DataService {
         stampedTime,
         releaseTemperature,
         sampleTemperature,
-        stampedTemperature
+        stampedTemperature,
+        user
       );
       if (dataInsertDataReferences.codcodmsg == 300) {
         return HttpResponse.response(CodesHttpEnum.notFound, null, "No se encontraron datos para actualizar");

@@ -33,4 +33,5 @@ export interface IDataReference {
     releaseTemperature: number | null;
     sampleTemperature: number | null;
     stampedTemperature: number | null;
+    user: string;
 }

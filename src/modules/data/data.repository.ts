@@ -12,7 +12,7 @@ export class DataRepository {
       throw error;
     }
   }
-  async isertDataReferences(query: string,reference: number, releaseStartDate: string | null, releaseStartTime: string | null, releaseFinishDate: string | null, releaseFinishTime: string | null, sampleStartDate: string | null, sampleStartTime: string | null, sampleFinishDate: string | null, sampleFinishTime: string | null, stampedDate: string | null, stampedTime: string | null, releaseTemperature: number | null, sampleTemperature: number | null, stampedTemperature: number | null): Promise<any> {
+  async isertDataReferences(query: string,reference: number, releaseStartDate: string | null, releaseStartTime: string | null, releaseFinishDate: string | null, releaseFinishTime: string | null, sampleStartDate: string | null, sampleStartTime: string | null, sampleFinishDate: string | null, sampleFinishTime: string | null, stampedDate: string | null, stampedTime: string | null, releaseTemperature: number | null, sampleTemperature: number | null, stampedTemperature: number | null, user: string): Promise<any> {
     try {
       const pool = await sql.connect(dbConfig);
       const request = pool.request();
@@ -30,6 +30,7 @@ export class DataRepository {
       request.input("RgOeTempLib", sql.Float, releaseTemperature);
       request.input("RgOeTempMst", sql.Float, sampleTemperature);
       request.input("RgOeTempSell", sql.Float, stampedTemperature);
+      request.input("usuario", sql.Char, user);
       const result = await request.execute(query);
       return result.recordset;
     } catch (error) {

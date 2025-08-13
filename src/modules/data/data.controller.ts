@@ -30,6 +30,7 @@ export const insertReferencesController = async (req: Request) => {
       releaseTemperature,
       sampleTemperature,
       stampedTemperature,
+      user,
     } = req.body;
     const query: string =
       "Sp_App_Registro_Datos_Inspeccion_Insertar_Datos";
@@ -48,7 +49,8 @@ export const insertReferencesController = async (req: Request) => {
       stampedTime,
       releaseTemperature,
       sampleTemperature,
-      stampedTemperature
+      stampedTemperature,
+      user
     );
   } catch (error) {
     console.error("Error en insertReferencesController:", error);

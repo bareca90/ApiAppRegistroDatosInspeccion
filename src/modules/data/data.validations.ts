@@ -74,5 +74,12 @@ export const insertDataValidationsRferences = {
       .messages({
         "number.base": "Stamped temperature must be a number or null."
       }),
-  }),
+    user: Joi.string()
+      .required()
+      .messages({
+        "string.base": "User is required and must be a string.",
+        "any.required": "User is required."
+      }),
+  })
 };
+  

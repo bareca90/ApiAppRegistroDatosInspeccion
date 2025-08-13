@@ -32,7 +32,7 @@ export const insertReferencesController = async (req: Request) => {
       stampedTemperature,
     } = req.body;
     const query: string =
-      "Sp_App_Registro_Datos_Inspeccion_Actualiza_Referencias";
+      "Sp_App_Registro_Datos_Inspeccion_Insertar_Datos";
     return new DataService().insertDataReferencesServices(
       query,
       reference,
